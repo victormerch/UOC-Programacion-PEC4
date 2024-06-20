@@ -10,7 +10,6 @@ Asegúrate de tener instaladas las siguientes dependencias:
 pip install -r requirements.txt
 ```
 
-
 ## Ejecución
 
 Para ejecutar el proyecto, simplemente ejecuta el archivo `main.py`:
@@ -46,6 +45,7 @@ python main.py
 
 El proyecto está organizado de la siguiente manera:
 
+```css
 .
 ├── LICENSE
 ├── README.md
@@ -62,6 +62,8 @@ El proyecto está organizado de la siguiente manera:
 └── tests/
     ├── __init__.py
     └── test_functions.py
+```
+
 
 ### main.py
 
@@ -90,6 +92,9 @@ python -m unittest test_functions.py
 ## Licencia
 
 Este proyecto está licenciado bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+
 # UOC-Programacion-PEC4
+
 # UOC-Programacion-PEC4
+
 # UOC-Programacion-PEC4

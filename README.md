@@ -1,10 +1,27 @@
-# Proyecto de Análisis de Datos y Visualización
+# Programación para la ciencia de datos - PEC4 0 - Proyecto de Análisis de Datos y Visualización 
 
 Este proyecto realiza un análisis de datos de comprobaciones de antecedentes de armas de fuego en EE.UU. y genera visualizaciones coropléticas y gráficos de evolución temporal.
 
 ## Requisitos
 
-Asegúrate de tener instaladas las siguientes dependencias:
+1. Crear el entorno virtual
+
+   Usa `venv` para crear un nuevo entorno virtual llamado `env`.
+
+   ```bash
+   python -m venv env
+   ```
+2. Activar entorno virtual
+
+   - En Windows:
+     ```bash
+     .\env\Scripts\activate
+     ```
+   - En macOS y Linux:
+     ```bash
+     source env/bin/activate
+     ```
+3. Instalar dependencias
 
 ```bash
 pip install -r requirements.txt
@@ -15,7 +32,7 @@ pip install -r requirements.txt
 Para ejecutar el proyecto, simplemente ejecuta el archivo `main.py`:
 
 ```bash
-python main.py
+python src/main.py
 ```
 
 ## Descripción
@@ -64,7 +81,6 @@ El proyecto está organizado de la siguiente manera:
     └── test_functions.py
 ```
 
-
 ### main.py
 
 Este archivo es el punto de entrada del programa. Importa funciones de los otros módulos y ejecuta las tareas principales.
@@ -86,15 +102,9 @@ Este archivo contiene pruebas unitarias para verificar que las funciones funcion
 Para ejecutar las pruebas unitarias, usa el siguiente comando:
 
 ```bash
-python -m unittest test_functions.py
+python -m unittest discover -s test
 ```
 
 ## Licencia
 
 Este proyecto está licenciado bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
-
-# UOC-Programacion-PEC4
-
-# UOC-Programacion-PEC4
-
-# UOC-Programacion-PEC4

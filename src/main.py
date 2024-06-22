@@ -37,6 +37,8 @@ def ejecutar_ejercicio(ejercicio, funcion, df=None, url=None, mensaje=None, fina
     return None
 
 def main():
+    print('UOC - PEC4 - Victor Merchan Venrtura\n\n')
+    
     df = ejecutar_ejercicio('1.1', read_csv, url='nics-firearm-background-checks.csv')
     
     df = ejecutar_ejercicio('1.2', clean_csv, df=df)

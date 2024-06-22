@@ -6,8 +6,6 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
-
 def time_evolution(df: pd.DataFrame):
     """
     Esta función crea un gráfico con la evolución temporal del número de permisos, pistolas y rifles,
@@ -76,15 +74,21 @@ def save_map_as_image(m, image_file):
         m (folium.Map): El mapa que se va a guardar.
         image_file (str): El archivo de imagen donde se guardará el mapa.
     """
-    img_data = m._to_png(5)
-    img = Image.open(io.BytesIO(img_data))
-    img.save(image_file)
-    print(f'Imagen guardada como {image_file}')
+    try:
+        img_data = m._to_png(5)
+        img = Image.open(io.BytesIO(img_data))
+        img.save(image_file)
+        print(f'Imagen guardada como {image_file}')
+    except Exception as e:
+        print(f'No se pudo guardar la imagen como PNG. Error: {e}')
+        html_file = image_file.replace('.png', '.html')
+        m.save(html_file)
+        print(f'El mapa se ha guardado como HTML en lugar de PNG: {html_file}')
 
 def save_usa_maps(df: pd.DataFrame):
     """
     Esta función crea mapas coropléticos para 'permit_perc', 'handgun_perc' y 'longgun_perc',
-    y los guarda como imágenes PNG.
+    y los guarda como imágenes PNG o HTML si no se puede guardar como PNG.
     
     Args:
         df (pd.DataFrame): El dataframe que se va a visualizar.
@@ -94,7 +98,6 @@ def save_usa_maps(df: pd.DataFrame):
     # Descargar el archivo GeoJSON de las fronteras de los estados de EE.UU.
     url = "https://raw.githubusercontent.com/python-visualization/folium/main/examples/data/us-states.json"
     state_geo_data = requests.get(url).json()
-
 
     # Crear los mapas para cada variable
     columns = ['permit_perc', 'handgun_perc', 'longgun_perc']

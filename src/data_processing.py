@@ -130,6 +130,7 @@ def groupby_state_and_year(df: pd.DataFrame) -> pd.DataFrame:
         if not isinstance(df, pd.DataFrame):
             raise ValueError('El input tiene que ser de tipo DataFrame')
         df = df.groupby(['year', 'state']).sum().reset_index().set_index(['year', 'state'])
+        print(df)
         return df
     except Exception as e:
         print(f'Ha ocurrido un error: {e}')

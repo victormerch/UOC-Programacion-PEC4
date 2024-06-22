@@ -1,0 +1,151 @@
+Metadata-Version: 2.1
+Name: analisis_datos_visualizacion
+Version: 1.0.0
+Summary: Análisis de datos de comprobaciones de antecedentes de armas de fuego en EE.UU. y generación de visualizaciones coropléticas y gráficos de evolución temporal.
+Home-page: https://github.com/victormerchan/analisis_datos_visualizacion
+Author: Victor Merchan Ventura
+Author-email: 1Victormerch@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+Requires-Dist: pandas==2.2.2
+Requires-Dist: matplotlib==3.9.0
+Requires-Dist: folium==0.17.0
+Requires-Dist: requests==2.32.3
+Requires-Dist: Pillow==10.3.0
+Requires-Dist: selenium==4.22.0
+
+# ProgramaciÃ³n para la ciencia de datos - PEC4 0 - Proyecto de AnÃ¡lisis de Datos y VisualizaciÃ³n 
+
+Este proyecto realiza un anÃ¡lisis de datos de comprobaciones de antecedentes de armas de fuego en EE.UU. y genera visualizaciones coroplÃ©ticas y grÃ¡ficos de evoluciÃ³n temporal.
+
+## Requisitos
+
+1. Crear el entorno virtual
+
+   Usa `venv` para crear un nuevo entorno virtual llamado `env`.
+
+   ```bash
+   python -m venv env
+   ```
+2. Activar entorno virtual
+
+   - En Windows:
+     ```bash
+     .\env\Scripts\activate
+     ```
+   - En macOS y Linux:
+     ```bash
+     source env/bin/activate
+     ```
+3. Instalar dependencias
+
+```bash
+pip install -r requirements.txt
+```
+
+## EjecuciÃ³n
+
+Para ejecutar el proyecto, simplemente ejecuta el archivo `main.py`:
+
+- En Windows:
+
+  ```bash
+  python src/main.py
+  ```
+- En macOS y Linux:
+
+  ```bash
+  python3 src/main.py
+  ```
+
+
+
+## Funcionamiento
+
+Cada ejercicio se mostrarÃ¡ secuencialmente en la pantalla, proporcionando la salida correspondiente a medida que se ejecuta. Para facilitar la revisiÃ³n y asegurar que el usuario pueda observar los resultados detalladamente, se incluirÃ¡ una pausa despuÃ©s de cada ejercicio. Esta pausa requerirÃ¡ que el usuario presione la tecla "Enter" para continuar y proceder con la visualizaciÃ³n del siguiente ejercicio. Esta interacciÃ³n permite un control mÃ¡s cÃ³modo del flujo del programa y asegura que el usuario tenga el tiempo necesario para analizar cada paso antes de avanzar.
+
+## DescripciÃ³n
+
+### Procesamiento de Datos
+
+* **`read_csv(url: str) -> pd.DataFrame`** : Esta funciÃ³n lee un archivo CSV y muestra las primeras cinco filas y su estructura.
+* **`clean_csv(df: pd.DataFrame) -> pd.DataFrame`** : Esta funciÃ³n limpia el DataFrame eliminando todas las columnas excepto 'month', 'state', 'permit', 'handgun', 'long_gun'.
+* **`rename_col(df: pd.DataFrame) -> pd.DataFrame`** : Esta funciÃ³n renombra la columna 'longgun' a 'long_gun'.
+* **`breakdown_date(df: pd.DataFrame) -> pd.DataFrame`** : Esta funciÃ³n divide la columna 'month' en dos nuevas columnas: 'year' y 'month'.
+* **`erase_month(df: pd.DataFrame) -> pd.DataFrame`** : Esta funciÃ³n elimina la columna 'month' del DataFrame.
+* **`groupby_state_and_year(df: pd.DataFrame) -> pd.DataFrame`** : Esta funciÃ³n agrupa los datos por aÃ±o y estado y calcula los valores acumulados totales.
+* **`print_biggest_handguns(df: pd.DataFrame)`** : Esta funciÃ³n imprime el estado y aÃ±o con el mayor nÃºmero de pistolas.
+* **`print_biggest_longguns(df: pd.DataFrame)`** : Esta funciÃ³n imprime el estado y aÃ±o con el mayor nÃºmero de rifles de asalto.
+* **`groupby_state(df: pd.DataFrame) -> pd.DataFrame`** : Esta funciÃ³n agrupa los datos Ãºnicamente por estado y calcula los valores acumulados totales.
+* **`clean_states(df: pd.DataFrame) -> pd.DataFrame`** : Esta funciÃ³n elimina los estados Guam, Mariana Islands, Puerto Rico y Virgin Islands del DataFrame.
+* **`merge_datasets(df: pd.DataFrame, url: str) -> pd.DataFrame`** : Esta funciÃ³n fusiona el DataFrame dado con otro DataFrame leÃ­do desde la URL proporcionada.
+* **`calculate_relative_values(df: pd.DataFrame) -> pd.DataFrame`** : Esta funciÃ³n calcula los valores relativos de permisos, pistolas y rifles de asalto.
+* **`print_kentucky_info(df: pd.DataFrame)`** : Esta funciÃ³n imprime informaciÃ³n sobre el estado de Kentucky y reemplaza el valor atÃ­pico de permisos con la media.
+
+### VisualizaciÃ³n
+
+* **`time_evolution(df: pd.DataFrame)`** : Esta funciÃ³n crea un grÃ¡fico con la evoluciÃ³n temporal del nÃºmero de permisos, pistolas y rifles de asalto.
+* **`save_usa_maps(df: pd.DataFrame)`** : Esta funciÃ³n crea mapas coroplÃ©ticos para 'permit_perc', 'handgun_perc' y 'longgun_perc', y los guarda como imÃ¡genes PNG.
+
+## Estructura del Proyecto
+
+El proyecto estÃ¡ organizado de la siguiente manera:
+
+```css
+.
+â”œâ”€â”€ LICENSE
+â”œâ”€â”€ README.md
+â”œâ”€â”€ requirements.txt
+â”œâ”€â”€ setup.py
+â”œâ”€â”€ data/
+â”‚   â””â”€â”€ us-state-populations.csv
+â”œâ”€â”€ images/
+â””â”€â”€ src/
+    â”œâ”€â”€ __init__.py
+    â”œâ”€â”€ main.py
+    â”œâ”€â”€ data_processing.py
+    â”œâ”€â”€ visualization.py
+â””â”€â”€ tests/
+    â”œâ”€â”€ __init__.py
+    â””â”€â”€ test_functions.py
+```
+
+### main.py
+
+Este archivo es el punto de entrada del programa. Importa funciones de los otros mÃ³dulos y ejecuta las tareas principales.
+
+### data_processing.py
+
+Este archivo contiene todas las funciones de procesamiento de datos con sus respectivos docstrings.
+
+### visualization.py
+
+Este archivo contiene todas las funciones de visualizaciÃ³n.
+
+### test_functions.py
+
+Este archivo contiene pruebas unitarias para verificar que las funciones funcionan correctamente.
+
+## Pruebas
+
+Para ejecutar las pruebas unitarias, usa el siguiente comando:
+
+- En Windows:
+
+  ```bash
+  python -m unittest discover -s test
+  ```
+- En macOS y Linux:
+
+  ```bash
+  python3 -m unittest discover -s test
+  ```
+
+
+## Licencia
+
+Este proyecto estÃ¡ licenciado bajo la Licencia MIT. Ver el archivo `LICENSE` para mÃ¡s detalles.

@@ -1,0 +1,9 @@
+LICENSE.md
+README.md
+setup.py
+src/analisis_datos_visualizacion.egg-info/PKG-INFO
+src/analisis_datos_visualizacion.egg-info/SOURCES.txt
+src/analisis_datos_visualizacion.egg-info/dependency_links.txt
+src/analisis_datos_visualizacion.egg-info/requires.txt
+src/analisis_datos_visualizacion.egg-info/top_level.txt
+test/test_functions.py
